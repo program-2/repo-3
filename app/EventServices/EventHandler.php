@@ -21,14 +21,18 @@ class EventHandler
       {
         $event = $this->getEvent($data);
         $customer = $this->createCustomer($data);
+
         $log = $this->createLog($data, $event);
+
         $summary = $this->getSummary($data);
+
         return $Response = $this->PrepareResponse($summary, $log, $customer);
       }
 
       public function getEvent($data)
       {
         return EventModel::getEvent($data);
+
       }
 
       public function createCustomer($data)
@@ -58,7 +62,10 @@ class EventHandler
 
       public function PrepareResponse($summary, $log, $customer)
       {
+
+
       $Response = $this->prepare($log);
+
             return  $Response ->additional(['meta' => [
                     'customers_operations_count' => $summary->id,
                     'gift' => $this->gift($summary),
@@ -75,6 +82,8 @@ class EventHandler
       {
         return (new ResponseResource(EventsLogModel::find($log->id)));
       }
+
+      #for each 10 operations.
       public function gift($summary)
       {
         if($summary->id%10 == 0) {return true;} else {return false;}

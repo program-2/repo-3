@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace App\EventServices\Tools;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
