@@ -68,7 +68,7 @@ class EventHandler
 
             return  $Response ->additional(['meta' => [
                     'customers_operations_count' => $summary->id,
-                    'gift' => $this->gift($summary),
+                    'gift' => $this->gift($summary->id),
                     'last_operation_data'=>['log_id'=>$log->id,
                                             'event_name'=>$log->event_name,
                                             'event_id'=>$log->event_id,
@@ -86,7 +86,7 @@ class EventHandler
       #for each 10 operations.
       public function gift($summary)
       {
-        if($summary->id%10 == 0) {return true;} else {return false;}
+        if($summary%10 == 0) {return true;} else {return false;}
       }
 
 }
